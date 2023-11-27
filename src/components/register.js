@@ -1,7 +1,9 @@
 // Register.js
 import React from 'react';
 import { Button, Container, Grid, GridCol, Image, TextInput } from '@mantine/core';
-import '../styling/login.css'; // Create a new CSS file for registration styling
+import { Link } from 'react-router-dom';
+
+import '../styling/login.css';
 import Logo from '../assets/logo.png';
 
 const Register = () => (
@@ -45,11 +47,11 @@ const Register = () => (
 
         <GridCol span={12}>
           <div className="bottom-text">
-            <p className="bottom">
-              Already have an account? <span className="text-bold">Login</span>
+          <p className="bottom">
+              Forgot Password? <Link to="/forgot-password" className="text-bold">Change it</Link>
             </p>
             <p className="bottom">
-              Forgot Password? <span className="text-bold">Change it</span>
+              Do you have an account?<Link to="/login" className="text-bold"> Login</Link>
             </p>
           </div>
         </GridCol>

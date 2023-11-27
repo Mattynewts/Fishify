@@ -1,7 +1,8 @@
 // ForgotPassword.js
 import React from 'react';
 import { Button, Container, Grid, GridCol, Image, TextInput } from '@mantine/core';
-import '../styling/login.css'; // Use the existing CSS file for styling
+import { Link } from 'react-router-dom';
+import '../styling/login.css';
 import Logo from '../assets/logo.png';
 
 const ForgotPassword = () => (
@@ -38,7 +39,10 @@ const ForgotPassword = () => (
         <GridCol span={12}>
           <div className="bottom-text">
             <p className="bottom">
-              Remember your password? <span className="text-bold">Login</span>
+              Need an account? <Link to="/register" className="text-bold">Sign up</Link>
+            </p>
+            <p className="bottom">
+              Do you have an account?<Link to="/login" className="text-bold"> Login</Link>
             </p>
           </div>
         </GridCol>

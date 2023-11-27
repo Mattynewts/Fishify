@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button, Container, Grid, GridCol, Image, TextInput } from '@mantine/core';
 import '../styling/login.css';
+import { Link } from 'react-router-dom';
 import Logo from '../assets/logo.png';
 
 const Login = () => (
@@ -46,10 +47,10 @@ const Login = () => (
         <GridCol span={12}>
           <div className="bottom-text">
             <p className="bottom">
-              Forgot Password? <span className="text-bold">Change it</span>
+              Forgot Password? <Link to="/forgot-password" className="text-bold">Change it</Link>
             </p>
             <p className="bottom">
-              Do you have an account?<span className="text-bold"> New Account</span>
+              Don't have an account?<Link to="/register" className="text-bold"> New Account</Link>
             </p>
           </div>
         </GridCol>
