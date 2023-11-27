@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { MantineProvider } from '@mantine/core';
+
+import Home from './components/home.js';
+import Login from './components/login.js';
+import Register from './components/register.js';
+import ForgotPassword from './components/forgot-password.js';
+
+import './styling/app.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='contain'>
+      <MantineProvider>
+            <Router>
+              <Routes>
+                <Route path="/" element={< Login />} />
+                <Route path="/login" element={< Login />} />
+                <Route path="/home" element={< Home />} />
+                <Route path="/register" element={< Register />} />
+                <Route path="/forgot-password" element={< ForgotPassword />} />
+              </Routes>
+          </Router>
+        </MantineProvider>
     </div>
   );
 }
