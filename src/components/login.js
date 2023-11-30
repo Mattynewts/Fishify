@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import { Button, Container, Grid, GridCol, Image, TextInput } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+
+import { useAuth } from './authcontext.js'; 
+
 import userData from '../user.json'; 
 import Logo from '../assets/logo.png';
 import '../styling/login.css';
@@ -11,6 +14,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
+  const { login } = useAuth();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -25,6 +29,7 @@ const Login = () => {
     );
 
     if (user) {
+      login(user);
       navigate('/dashboard');
     } else {
       setError('Invalid username or password');

@@ -1,0 +1,42 @@
+/* bottom-nav.css */
+
+.bottom-nav-container {
+    background-color: #ffffff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    border-top-left-radius: 20px; /* Adjust the radius as needed */
+    border-top-right-radius: 20px; /* Adjust the radius as needed */
+}
+
+.bottom-nav-container a {
+    text-decoration: none;
+    color: #333;
+}
+
+.bottom-nav-container img {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.bottom-nav-container .mantine-col {
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bottom-nav-container .mantine-col:first-child {
+    border-right: 1px solid #ccc;
+}
+
+.nav-sec {
+    padding: 20px;
+    padding-bottom: 0px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-around;
+}
