@@ -20,13 +20,11 @@ const ForgotPassword = () => (
         </GridCol>
         <br></br>
         <br></br>
-
         <GridCol span={12}>
           <strong>
             <h1 className="login-text">Forgot Password</h1>
           </strong>
         </GridCol>
-
         <GridCol span={12}>
           <form>
             <TextInput placeholder="Email" autoComplete="email" required />
@@ -35,7 +33,6 @@ const ForgotPassword = () => (
             </Button>
           </form>
         </GridCol>
-
         <GridCol span={12}>
           <div className="bottom-text">
             <p className="bottom">

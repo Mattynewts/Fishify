@@ -1,34 +1,46 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Container, Grid, GridCol, Image, TextInput } from '@mantine/core';
 import BottomNavBar from './bottom-nav.js';
+import MiniFish from '../assets/minifish.png'
 import '../styling/login.css';
-import '../styling/dashboard.css'
+import '../styling/dashboard.css';
 
 const Dashboard = () => {
   return (
     <div className='contain-dash'>
       <Container size="xs">
-        <Grid>
-          <br></br>
-          <br></br>
-          <br></br>
-          <GridCol span={12}>
-            <strong><h1 className="login-text-2">Discovery Map</h1></strong>
+        <Grid className='cont'>
+          <br />
+          <br />
+          <br />
+          <GridCol className="contain-content" style={{ marginBottom: '15px', display: 'flex', alignItems: 'center' }}>
+            <Image src={MiniFish} alt="Minifish Logo" width={40} height={25} />
+            <strong><h1 className="login-text-2" style={{ marginLeft: '5px' }}>Discovery Map</h1></strong>
           </GridCol>
           <GridCol span={12}>
-              <TextInput 
-                className='input'
-                placeholder="Search"
-                autoComplete="username"
-                required
-                name="search"
-              />
+            <TextInput
+              className='input-dash'
+              placeholder="🔎 Search"
+              autoComplete="username"
+              required
+              name="search"
+              styles={{
+                input: {
+                  appearance: 'none',
+                  backgroundColor: 'rgb(255, 255, 255)',
+                  border: 'none',
+                  borderBottom: '1px solid transparent',
+                  boxShadow: 'none',
+                  WebkitBoxShadow: 'none'
+                },
+              }}
+            />
           </GridCol>
         </Grid>
-          <br></br>
-          <br></br>
-          <br></br>
-        < BottomNavBar />
+        <br />
+        <br />
+        <br />
+        <BottomNavBar />
       </Container>
     </div>
   );

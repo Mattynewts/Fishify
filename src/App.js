@@ -5,8 +5,6 @@ import { MantineProvider } from '@mantine/core';
 
 import { AuthProvider } from './components/authcontext.js';
 
-
-import Home from './components/home.js';
 import Login from './components/login.js';
 import Register from './components/register.js';
 import ForgotPassword from './components/forgot-password.js';
@@ -23,7 +21,6 @@ function App() {
                   <Routes>
                     <Route path="/" element={< Login />} />
                     <Route path="/login" element={< Login />} />
-                    <Route path="/home" element={< Home />} />
                     <Route path="/register" element={< Register />} />
                     <Route path="/forgot-password" element={< ForgotPassword />} />
                     <Route path="/dashboard" element={< Dashboard />} />
