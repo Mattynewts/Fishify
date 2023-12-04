@@ -13,7 +13,7 @@ body {
   }
   
   .contain-dash {
-    background-color: #F1F3F4; /* Set the background color for the content area */
+    background-color: #F1F3F4; /* Set the background color for the content area back ground color */
     display: flex;
     flex-direction: column;
     align-items: center;

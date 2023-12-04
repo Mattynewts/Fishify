@@ -1,0 +1,78 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 300px;
+    background-color: #F1F3F4;
+    
+   
+  }
+  .rectangle-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 0 auto; /* Center the rectangle */
+    width: 80%; /* Adjust the width as needed */
+    background-color: white;
+    border-radius: 10px; /* Rounded edges */
+  }
+  .input-dash {
+    font-family: 'Poppins Light', sans-serif !important;
+    font-weight: 100;
+    appearance: 'none';
+    background-color: 'white';
+    border: 'none';
+    border-bottom: '1px solid transparent';
+    box-shadow: 'none';
+    padding:15px;
+  }
+  .info-text {
+    font-size: 0.9em; /* Smaller font size */
+    
+  }
+  .input-no-focus-outline input:focus {
+    outline: none;
+    /* Optionally, add other styles for the focus state, like a different border */
+    border: 1px solid #ccc; /* Example: light grey border */
+  }
+  .round-rectangle {
+    background-color: #fff; /* Set background color */
+    border: 1px solid #ccc; /* Border style */
+    border-radius: 15px; /* Rounded edges */
+    padding: 10px 20px;
+    margin-bottom: 10px; /* Space between each rectangle */
+     
+    
+  }
+  .profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+    text-align: center;
+    color: '#150B3D';
+    font-weight: 700;
+    font-size: large;
+    font-family: 'Poppins' ;
+  }
+  .Username
+  {
+    text-align: center;
+    color: '#150B3D';
+    font-weight: 700;
+    font-size: x-large;
+    font-family: 'Poppins' ;
+  }
+  .info-text
+  {
+    text-align: center;
+    font-family: 'Poppins' ;
+  }
+  .phone
+  {
+    text-align: center;
+    font-size: medium;
+    font-family: 'Poppins' ;
+  }
+  .bottom-nav-wrapper
+  {
+    margin-top: 20px;
+  }
+  

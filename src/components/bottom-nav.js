@@ -19,7 +19,7 @@ const BottomNavBar = () => {
           </GridCol>
           <GridCol style={{ fontSize: '12px', textAlign: 'center', display: 'flex', justifyContent: 'space-between', margin: '0 auto', width: '245px' }}>
             <Link to="/path-for-new-spot" style={{ marginLeft: '10px' }}>New Spot</Link>
-            <Link to="/path-for-profile">Profile</Link>
+            <Link to="/profile">Profile</Link>
             <Link to="/path-for-notifications">Notifications</Link>
           </GridCol>
         </Grid>
