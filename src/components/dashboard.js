@@ -10,6 +10,7 @@ import plusIcon from '../assets/plusIcon.png';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useAuth } from './authcontext.js'; // Adjust the path to the AuthContext file
 import { useNavigate } from 'react-router-dom'; 
+import locationData from "../location.json";
 import '../styling/login.css';
 import '../styling/dashboard.css';
 
@@ -114,6 +115,19 @@ const Dashboard = () => {
     depth: '',
     warnings: '',
   });
+
+  useEffect(() => {
+    const newGrid = Array.from({ length: 10 }, () => Array(10).fill(null));
+
+    locationData.forEach(({ Location_coords_x, Location_coords_y }) => {
+      if (Location_coords_x >= 0 && Location_coords_x <= 10 && Location_coords_y >= 0 && Location_coords_y <= 10) {
+        newGrid[Location_coords_x][Location_coords_y] = 
+        <img src={spotMark}/>; 
+      }
+    });
+
+    setGrid(newGrid);
+  }, []);
 
   const handleClick = (row, col) => {
     if(MapGrid){
@@ -239,31 +253,7 @@ const Dashboard = () => {
                 />
               )}
 
-              {!CreateLocInfo && (
-                <img
-                  src={spotMark}
-                  alt="spot1"
-                  className="spot-1"
-                />  
-              )}
-
-              {!CreateLocInfo && (
-                <img
-                  src={spotMark}
-                  alt="spot2"
-                  className="spot-2"
-                />  
-              )}
-
-              {!CreateLocInfo && (
-                <img
-                  src={spotMark}
-                  alt="spot3"
-                  className="spot-3"
-                />  
-              )}
-
-              
+             
               {!CreateLocInfo && MapGrid && selectedCell && (
                 <img
                   src={newSpotMark}
