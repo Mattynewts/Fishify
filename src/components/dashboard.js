@@ -6,9 +6,10 @@ import mapSample from '../assets/mapSample.png';
 import newSpotMark from '../assets/newSpotMark.png';
 import spotMark from '../assets/spotMarker.png';
 import closePNG from '../assets/closePNG.png';
+import plusIcon from '../assets/plusIcon.png';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useAuth } from './authcontext.js'; // Adjust the path to the AuthContext file
-import { useNavigate } from 'react-router-dom'; // Assuming you are using React Router v6
+import { useNavigate } from 'react-router-dom'; 
 import '../styling/login.css';
 import '../styling/dashboard.css';
 
@@ -21,8 +22,8 @@ const InformationPopup = ({ onClose }) => {
   const [depth, setDepth] = useState('');
   const [warnings, setWarnings] = useState('');
 
-  const handleSubmit = () => {
-    // You can use the state values (spotName, description, tags, species, depth, warnings) here
+  const onSubmit = () => {
+    
     console.log('Spot information saved:', { spotName, description, tags, species, depth, warnings });
 
 
@@ -86,7 +87,9 @@ const InformationPopup = ({ onClose }) => {
           onChange={(e) => setWarnings(e.target.value)}
         />
       </div>
-      <button onClick={handleSubmit}>Submit</button>
+      <button onClick={onSubmit}>
+         Submit 
+      </button>
     </div>
   );
 };
@@ -131,30 +134,25 @@ const Dashboard = () => {
     setMapGrid(false);
     setCreateLocation(true);
     setExitButton(false); 
-  };
-
-  const handleCreateLocInfoSubmit = () => {
-    //fill in when we connect json
-  }
-
-
-  const handleCreateLocInfoClose = () => {
     setCreateLocInfo(false);
   };
 
-  //change where this exits to (needs to go back to main map)
-  const handleSaveLocationInfo = () => {
 
-    setSpotInfo = () => ({
-      spotName: SpotInfo.spotName,
-      description: SpotInfo.description,
-      tags: SpotInfo.tags,
-      species: SpotInfo.species,
-      depth: SpotInfo.depth,
-      warnings: SpotInfo.warnings,
-    });
+  const handleCreateLocInfoClose = () => {
+    setMapGrid(false);
+    setCreateLocation(true);
+    setExitButton(false); 
+    setCreateLocInfo(false);
+  };
+
+  //currently exits back to main menu
+  //maybe change so save goes back to main map 
+  //and exit button goes back to create new location 
+  const handleCreateLocInfoSubmit = () => {
+
+    //connect to json and set info
+
   
-
     handleCreateLocInfoClose();
 
   };
@@ -291,7 +289,9 @@ const Dashboard = () => {
             </div>
             
             {createLocation && (
-              <button onClick={handleCreateLocationClick}>Create Location</button>
+              <button className="create-location" onClick={handleCreateLocationClick}>
+                  <img src={plusIcon} alt="plus" /> Create Location
+              </button>
             )}
 
 
@@ -299,7 +299,8 @@ const Dashboard = () => {
 
           {/* need to handle case where on submit we go back to map  */}
           {CreateLocInfo && (
-            <InformationPopup onClose = {handleCreateLocInfoClose}
+            <InformationPopup 
+            onClose = {handleCreateLocInfoClose}
             onSubmit = {handleCreateLocInfoSubmit}
             SpotInfo = {SpotInfo}
             setSpotInfo = {setSpotInfo}

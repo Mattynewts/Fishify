@@ -2,16 +2,31 @@
     {
       "Location_name": "good spot",
       "Location_group": "my group",
-      "group_id": "2"
+      "group_id": "2",
+      "description": "this spot just slaps",
+      "tags": "Flys, Bait",
+      "species": "Pike, Walleyes",
+      "depth": "200m",
+      "warnings": "Big Waves"
     },
     {
         "Location_name": "okay spot",
         "Location_group": "my group",
-        "group_id": "2"
+        "group_id": "2",
+        "description": "this spot is okay",
+        "tags": "Flys, Bait",
+        "species": "rainbow trout",
+        "depth": "20m",
+        "warnings": ""
     },
     {
         "Location_name": "my secret spot",
         "Location_group": "my group",
-        "group_id": "2"
+        "group_id": "2",
+        "description": "only some can know",
+        "tags": "Flys, Bait",
+        "species": "Pike, Walleyes",
+        "depth": "50m",
+        "warnings": ""
     }
 ]
