@@ -39,3 +39,97 @@ body {
     margin-left: 10px;
     margin-right: 10px;
   }
+
+
+  .grid-container {
+    position: relative;
+    border: 0px solid #ffffff;
+  }
+
+  .map-container {
+    position: relative;
+    border: 20px solid #ffffff;
+  }
+  
+  .grid-row {
+    display: flex;
+  }
+
+  .grid-cell {
+    border: 1px solid #ccc;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+  }
+
+  .map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Make the image cover the entire grid */
+    height: 100%;
+    opacity: 40%; /* Adjust the opacity as needed */
+    pointer-events: none; /* Allow clicks to pass through the image to the underlying grid */
+  }
+
+  .overlay-newMarker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px; /* Make the image cover the entire grid */
+    height: 30px;
+    opacity: 100; /* Adjust the opacity as needed */
+    pointer-events: none; /* Allow clicks to pass through the image to the underlying grid */
+  }
+
+  .spot-1 {
+    position: absolute;
+    top: 32px;
+    left: 0;
+    width: 30; /* Make the image cover the entire grid */
+    height: 30;
+    opacity: 40%; /* Adjust the opacity as needed */
+    pointer-events: none; /* Allow clicks to pass through the image to the underlying grid */
+  }
+
+  .spot-2 {
+    position: absolute;
+    top: 0;
+    left: 32px;
+    width: 30; /* Make the image cover the entire grid */
+    height: 30;
+    opacity: 40%; /* Adjust the opacity as needed */
+    pointer-events: none; /* Allow clicks to pass through the image to the underlying grid */
+  }
+
+  .spot-3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30; /* Make the image cover the entire grid */
+    height: 30;
+    opacity: 40%; /* Adjust the opacity as needed */
+    pointer-events: none; /* Allow clicks to pass through the image to the underlying grid */
+  }
+
+
+  .close-button {
+    position: absolute;
+    top: -12px;
+    left: 91%;
+    width: 20px; /* Make the image cover the entire grid */
+    height: 20px;
+    opacity: 0; /* Adjust the opacity as needed */
+  }
+
+  .close-PNG {
+    position: absolute;
+    top: 0;
+    left: 90%;
+    width: 30px; /* Make the image cover the entire grid */
+    height: 30px;
+    opacity: 100%; /* Adjust the opacity as needed */
+    pointer-events: none;
+  }
