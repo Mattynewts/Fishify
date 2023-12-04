@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useReducer } from 'react';
 import { Container, Grid, GridCol, Image, TextInput } from '@mantine/core';
 import BottomNavBar from './bottom-nav.js';
 import MiniFish from '../assets/minifish.png';
@@ -11,21 +11,45 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { useAuth } from './authcontext.js'; // Adjust the path to the AuthContext file
 import { useNavigate } from 'react-router-dom'; 
 import locationData from "../location.json";
+import { setLocations } from './authcontext.js';
 import '../styling/login.css';
 import '../styling/dashboard.css';
 
+
 //infomation popup stub (Need to connect to json file)
-const InformationPopup = ({ onClose }) => {
+const InformationPopup = ({ onClose, onSave, spotInformation, setSpotInformation, selectedCell }) => {
   const [spotName, setSpotName] = useState('');
+  const [Location_group, setLocation_group] = useState('');
+  const [Group_id, setGroup_id] = useState('');
+  const [Location_coords_x, setLocation_coords_x] = useState('');
+  const [Location_coords_y, setLocation_coords_y] = useState('');
   const [description, setDescription] = useState('');
   const [tags, setTags] = useState('');
   const [species, setSpecies] = useState('');
   const [depth, setDepth] = useState('');
   const [warnings, setWarnings] = useState('');
 
+  const { user, login, locations, setLocations } = useAuth();
+  //const { grid, selectedCell, handleClick } = Dashboard();
+
   const onSubmit = () => {
+ 
+    const newLocation = {
+      Location_name: spotName,
+      Location_group: Location_group,
+      group_id: Group_id,
+      Location_coords_x: selectedCell.row,
+      Location_coords_y: selectedCell.col,
+      description: description,
+      tags: tags,
+      species: species,
+      depth: depth,
+      warnings: warnings,
+    };
+
+    locations.push(newLocation);
     
-    console.log('Spot information saved:', { spotName, description, tags, species, depth, warnings });
+    console.log('Spot information saved:', { spotName, Location_coords_x, Location_coords_y, description, tags, species, depth, warnings });
 
 
     onClose();
@@ -43,6 +67,7 @@ const InformationPopup = ({ onClose }) => {
           id="spotName"
           value={spotName}
           onChange={(e) => setSpotName(e.target.value)}
+          
         />
       </div>
       <div>
@@ -98,7 +123,7 @@ const InformationPopup = ({ onClose }) => {
 
 
 const Dashboard = () => {
-  const { user, login } = useAuth();
+  const { user, login, locations, setLocations } = useAuth();
   const navigate = useNavigate();
 
   const [grid, setGrid] = useState(Array.from({ length: 10 }, () => Array(10).fill(null)));
@@ -107,8 +132,26 @@ const Dashboard = () => {
   const [createLocation, setCreateLocation] = useState(true);
   const [exitButton, setExitButton] = useState(false);
   const [CreateLocInfo, setCreateLocInfo] = useState(false);
+  const [forceRerender, forceUpdate] = useReducer((x) => x + 1, 0);
   const [SpotInfo, setSpotInfo] = useState({
     spotName: '',
+    Location_name: '',
+    Location_group: '',
+    group_id: '',
+    Location_coords_x: '',
+    Location_coords_y: '',
+    description: '',
+    tags: '',
+    species: '',
+    depth: '',
+    warnings: '',
+  });
+  const [LocationInfo, setLocationInfo] = useState({
+    Location_name: '',
+    Location_group: '',
+    group_id: '',
+    Location_coords_x: '',
+    Location_coords_y: '',
     description: '',
     tags: '',
     species: '',
@@ -119,12 +162,15 @@ const Dashboard = () => {
   useEffect(() => {
     const newGrid = Array.from({ length: 10 }, () => Array(10).fill(null));
 
-    locationData.forEach(({ Location_coords_x, Location_coords_y }) => {
+    locations.forEach(({ Location_coords_x, Location_coords_y }) => {
       if (Location_coords_x >= 0 && Location_coords_x <= 10 && Location_coords_y >= 0 && Location_coords_y <= 10) {
         newGrid[Location_coords_x][Location_coords_y] = 
         <img src={spotMark}/>; 
       }
     });
+
+    console.log(user);
+    console.log(locations);
 
     setGrid(newGrid);
   }, []);
@@ -164,9 +210,35 @@ const Dashboard = () => {
   //and exit button goes back to create new location 
   const handleCreateLocInfoSubmit = () => {
 
-    //connect to json and set info
+    /*
+      const newLocation = {
+        Location_name: '',
+        Location_group: '',
+        group_id: '',
+        Location_coords_x: selectedCell.row,
+        Location_coords_y: selectedCell.col,
+        description: '',
+        tags: '',
+        species: '',
+        depth: '',
+        warnings: '',
+      };
+      */
+      //const updatedLocations = [...locationData, newLocation];
 
-  
+      //setLocations((prevLocations) => [...prevLocations, newLocation]);
+      //locations.push(newLocation);
+      /*
+      setGrid((prevGrid) => {
+        const newGrid = [...prevGrid];
+        newGrid[selectedCell.row][selectedCell.col] = 'X'; // Mark the cell as occupied
+        setGrid(newGrid);
+      });
+      */
+
+
+
+    //connect to json and set info
     handleCreateLocInfoClose();
 
   };
@@ -178,10 +250,11 @@ const Dashboard = () => {
     }
     else {
       console.log(user);
+      console.log(locations);
     }
     
-    
   }, [user, navigate]);
+  
 
   return (
     <div className='contain-dash'>
@@ -289,11 +362,13 @@ const Dashboard = () => {
 
           {/* need to handle case where on submit we go back to map  */}
           {CreateLocInfo && (
+            //handleCreateLocInfoSubmit
             <InformationPopup 
             onClose = {handleCreateLocInfoClose}
             onSubmit = {handleCreateLocInfoSubmit}
             SpotInfo = {SpotInfo}
             setSpotInfo = {setSpotInfo}
+            selectedCell = {selectedCell}
             
             />
           )}
