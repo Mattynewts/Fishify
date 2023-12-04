@@ -12,6 +12,86 @@ import { useNavigate } from 'react-router-dom'; // Assuming you are using React 
 import '../styling/login.css';
 import '../styling/dashboard.css';
 
+//infomation popup stub (Need to connect to json file)
+const InformationPopup = ({ onClose }) => {
+  const [spotName, setSpotName] = useState('');
+  const [description, setDescription] = useState('');
+  const [tags, setTags] = useState('');
+  const [species, setSpecies] = useState('');
+  const [depth, setDepth] = useState('');
+  const [warnings, setWarnings] = useState('');
+
+  const handleSubmit = () => {
+    // You can use the state values (spotName, description, tags, species, depth, warnings) here
+    console.log('Spot information saved:', { spotName, description, tags, species, depth, warnings });
+
+
+    onClose();
+  };
+
+  return (
+    <div className="popup">
+      <button className="popup-close-button" onClick={onClose}>
+        X {/*<img src={closePNG} alt="close" />*/}
+      </button>
+      <div>
+        <label htmlFor="spotName">Spot Name:</label>
+        <input
+          type="text"
+          id="spotName"
+          value={spotName}
+          onChange={(e) => setSpotName(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="description">Description:</label>
+        <textarea
+          id="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="tags">Tags:</label>
+        <input
+          type="text"
+          id="tags"
+          value={tags}
+          onChange={(e) => setTags(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="species">Species:</label>
+        <input
+          type="text"
+          id="species"
+          value={species}
+          onChange={(e) => setSpecies(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="depth">Depth:</label>
+        <input
+          type="text"
+          id="depth"
+          value={depth}
+          onChange={(e) => setDepth(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="warnings">Warnings:</label>
+        <textarea
+          id="warnings"
+          value={warnings}
+          onChange={(e) => setWarnings(e.target.value)}
+        />
+      </div>
+      <button onClick={handleSubmit}>Submit</button>
+    </div>
+  );
+};
+
+
 
 const Dashboard = () => {
   const { user, login } = useAuth();
@@ -19,29 +99,65 @@ const Dashboard = () => {
 
   const [grid, setGrid] = useState(Array.from({ length: 10 }, () => Array(10).fill(null)));
   const [selectedCell, setSelectedCell] = useState(null);
-  const [CreateSpotGrid, setCreateNewSpot] = useState(false);
+  const [MapGrid, setMapGrid] = useState(false);
   const [createLocation, setCreateLocation] = useState(true);
   const [exitButton, setExitButton] = useState(false);
+  const [CreateLocInfo, setCreateLocInfo] = useState(false);
+  const [SpotInfo, setSpotInfo] = useState({
+    spotName: '',
+    description: '',
+    tags: '',
+    species: '',
+    depth: '',
+    warnings: '',
+  });
 
   const handleClick = (row, col) => {
-    if(CreateSpotGrid){
+    if(MapGrid){
       console.log(`Clicked on cell (${row}, ${col})`);
       setSelectedCell({row, col});
+      setCreateLocInfo(true);
     }
     
   };
 
   const handleCreateLocationClick = () => {
-    setCreateNewSpot(true);
+    setMapGrid(true);
     setCreateLocation(false);
     setExitButton(true); 
   };
 
   const handleExitButtonClick = () => {
-    setCreateNewSpot(false);
+    setMapGrid(false);
     setCreateLocation(true);
     setExitButton(false); 
+  };
+
+  const handleCreateLocInfoSubmit = () => {
+    //fill in when we connect json
   }
+
+
+  const handleCreateLocInfoClose = () => {
+    setCreateLocInfo(false);
+  };
+
+  //change where this exits to (needs to go back to main map)
+  const handleSaveLocationInfo = () => {
+
+    setSpotInfo = () => ({
+      spotName: SpotInfo.spotName,
+      description: SpotInfo.description,
+      tags: SpotInfo.tags,
+      species: SpotInfo.species,
+      depth: SpotInfo.depth,
+      warnings: SpotInfo.warnings,
+    });
+  
+
+    handleCreateLocInfoClose();
+
+  };
 
 
   useEffect(() => {
@@ -103,12 +219,12 @@ const Dashboard = () => {
               )}
 
               {/* Grid */}
-              {grid.map((row, rowIndex) => (
+              {!CreateLocInfo && grid.map((row, rowIndex) => (
                 <div key={rowIndex} className="grid-row">
                   {row.map((cell, colIndex) => (
                     <div
                       key={colIndex}
-                      className={`grid-cell ${CreateSpotGrid && selectedCell && selectedCell.row === rowIndex && selectedCell.col === colIndex ? 'selected' : ''}`} //"grid-cell"
+                      className={`grid-cell ${MapGrid && selectedCell && selectedCell.row === rowIndex && selectedCell.col === colIndex ? 'selected' : ''}`} //"grid-cell"
                       onClick={() => handleClick(rowIndex, colIndex)}
                     >
                       {cell}
@@ -117,35 +233,40 @@ const Dashboard = () => {
                 </div>
               ))}
 
-              <img
-                src={mapSample}
-                alt="mapSample"
-                className="map-overlay"
-                
-              />
+              {!CreateLocInfo && (
+                <img
+                  src={mapSample}
+                  alt="mapSample"
+                  className="map-overlay"
+                />
+              )}
 
-              <img
-                src={spotMark}
-                alt="spot1"
-                className="spot-1"
-                
-              />  
+              {!CreateLocInfo && (
+                <img
+                  src={spotMark}
+                  alt="spot1"
+                  className="spot-1"
+                />  
+              )}
 
-              <img
-                src={spotMark}
-                alt="spot2"
-                className="spot-2"
-                
-              />  
+              {!CreateLocInfo && (
+                <img
+                  src={spotMark}
+                  alt="spot2"
+                  className="spot-2"
+                />  
+              )}
 
-              <img
-                src={spotMark}
-                alt="spot3"
-                className="spot-3"
-                
-              />  
+              {!CreateLocInfo && (
+                <img
+                  src={spotMark}
+                  alt="spot3"
+                  className="spot-3"
+                />  
+              )}
+
               
-              {CreateSpotGrid && selectedCell && (
+              {!CreateLocInfo && MapGrid && selectedCell && (
                 <img
                   src={newSpotMark}
                   alt="newSpotMark"
@@ -157,7 +278,8 @@ const Dashboard = () => {
                 />
               )}
 
-              {CreateSpotGrid && (
+
+              {!CreateLocInfo && MapGrid && (
                 <img
                 src={closePNG}
                 alt="close"
@@ -172,7 +294,18 @@ const Dashboard = () => {
               <button onClick={handleCreateLocationClick}>Create Location</button>
             )}
 
+
           </div>
+
+          {/* need to handle case where on submit we go back to map  */}
+          {CreateLocInfo && (
+            <InformationPopup onClose = {handleCreateLocInfoClose}
+            onSubmit = {handleCreateLocInfoSubmit}
+            SpotInfo = {SpotInfo}
+            setSpotInfo = {setSpotInfo}
+            
+            />
+          )}
 
         </Grid>
         <br />

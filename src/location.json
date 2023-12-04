@@ -1,0 +1,17 @@
+[
+    {
+      "Location_name": "good spot",
+      "Location_group": "my group",
+      "group_id": "2"
+    },
+    {
+        "Location_name": "okay spot",
+        "Location_group": "my group",
+        "group_id": "2"
+    },
+    {
+        "Location_name": "my secret spot",
+        "Location_group": "my group",
+        "group_id": "2"
+    }
+]
