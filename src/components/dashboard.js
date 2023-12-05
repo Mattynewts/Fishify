@@ -380,9 +380,7 @@ const Dashboard = () => {
           )}
 
         </Grid>
-        <br />
-        <br />
-        <br />
+        <br></br>
         <BottomNavBar selectedTab={1} />
       </Container>
     </div>

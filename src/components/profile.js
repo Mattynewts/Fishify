@@ -19,6 +19,9 @@ const Profile = () => {
   return (
     <div className="profile-container">
       <Container>
+        <br></br>
+        <br></br>
+        <br></br>
         <Grid>
           <GridCol className='contain-content' style={{ marginBottom: '15px', display: 'flex', alignItems: 'center' }}>
             <Image src={MiniFish} alt='Minifish Logo' width={50} height={30} style={{ marginLeft: '5px' , marginTop:'10px'}} />
@@ -27,7 +30,7 @@ const Profile = () => {
                 Profile
               </h1>
             </strong>
-            <GiHamburgerMenu
+            <GiHamburgerMenu onClick={openHamburgerMenu}
               style={{ marginLeft: 'auto', cursor: 'pointer', fontSize: '24px',marginRight:'20px',marginTop:'15px' }}
             />
           </GridCol>
