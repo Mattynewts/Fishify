@@ -8,7 +8,7 @@
       "info":"Computer Science Student @ UofC",
       "Phone":"(123)456-7890",
       "email": "user.one@example.com",
-      "picture":"'./profilePics/logo.png'"
+      "picture":"./profilePics/logo.png"
     },
     {
       "username": "user2",

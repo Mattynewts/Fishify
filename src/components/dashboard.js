@@ -29,6 +29,8 @@ const InformationPopup = ({ onClose, onSave, spotInformation, setSpotInformation
   const [depth, setDepth] = useState('');
   const [warnings, setWarnings] = useState('');
   const navigate = useNavigate();
+  const [showSpotInfo, setShowSpotInfo] = useState({ visible: false, spotData: null });
+
 
   const { user, login, locations, setLocations } = useAuth();
   //const { grid, selectedCell, handleClick } = Dashboard();
@@ -169,7 +171,9 @@ const Dashboard = () => {
     locations.forEach(({ Location_coords_x, Location_coords_y }) => {
       if (Location_coords_x >= 0 && Location_coords_x <= 10 && Location_coords_y >= 0 && Location_coords_y <= 10) {
         newGrid[Location_coords_x][Location_coords_y] = 
-        <img src={spotMark}/>; 
+        <img src={spotMark}
+        onClick={handleSpotClick}
+        />; 
       }
     });
 
@@ -184,6 +188,7 @@ const Dashboard = () => {
       console.log(`Clicked on cell (${row}, ${col})`);
       setSelectedCell({row, col});
       setCreateLocInfo(true);
+      
 
     }
     

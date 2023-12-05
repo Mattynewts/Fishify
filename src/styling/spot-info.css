@@ -1,14 +1,15 @@
 .spot-info-popup {
   position: absolute;
   width: 70%;
-  height: 80%;
+  height: 100%;
   background-color: white;
   border-radius: 15px;
   padding: 10px;
   /* Center the popup */
   left: 50%;
-  top: 45%;
+  top: 40%;
   transform: translate(-50%, -50%);
+  z-index: 1;
 }
 
 
@@ -48,10 +49,10 @@
 }
 
 .round-rectangle {
-  padding: 3px 8px; /* Reduced padding for smaller size */
+
   border-radius: 10px; /* Rounded corners */
   color: black; /* Text color set to black */
-  font-size: 10px; /* Smaller font size set to 10px */
+  font-size: 6px; /* Smaller font size set to 10px */
   margin-right: 5px; /* Space between rectangles */
   font-family: 'Poppins', sans-serif; /* Font family set to 'Poppins' with a sans-serif fallback */
 }
