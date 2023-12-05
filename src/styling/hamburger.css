@@ -5,9 +5,9 @@ body {
 }
 
 .hamburger-page-container {
-    width: 396px;
-    height: 685px;
-    background: white;
+    width: 320px;
+    height: 639px;
+    background: rgb(255, 255, 255);
     border-radius: 10px;
     margin: auto;
     display: flex;
@@ -21,23 +21,27 @@ body {
     padding: 16px;
     position: fixed;
     top: 0;
-    width: 396px;
+    width: 320px;
     background: white;
+    margin-left: -20px;
     z-index: 1;
 }
 
 .groups-list-container {
     overflow-y: auto;
     margin-top: 60px;
-    margin-bottom: 60px;
+    margin-bottom: 0px;
 }
 
 .title {
     font-weight: 700;
+    font-size: 20px;
+    text-align: center;
 }
 
 .group-count {
     font-weight: 500;
+    font-size: 13px;
 }
 
 .groups-list {
@@ -47,17 +51,18 @@ body {
 .group-item {
     display: flex;
     align-items: center;
-    background: #F4F4F4;
+    background: #ffffff;
     margin-bottom: 10px;
-    box-shadow: 0px 4px 62px rgba(153, 170, 197, 0.18);
+    box-shadow: 0 4px 42px rgba(153, 171, 198, 0.13);
     border-radius: 15px;
     padding: 10px;
+    font-size: 14px;
 }
 
 .group-color-indicator {
     width: 20px;
     height: 20px;
-    border-radius: 10px;
+    border-radius: 5px;
     margin-right: 10px;
 }
 
@@ -83,7 +88,7 @@ body {
 
 .create-group-button {
     bottom: 0;
-    width: 396px;
+    width: 200px;
     padding: 10px;
     border: none;
     border-radius: 20px;
@@ -92,6 +97,8 @@ body {
     cursor: pointer;
     font-size: 14px;
     box-shadow: 0px 4px 62px rgba(107, 124, 149, 0.18);
+    text-align: center;
+    margin: 10px auto;
 }
 
 .modal-overlay {

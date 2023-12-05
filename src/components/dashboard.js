@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useReducer } from 'react';
-import { Container, Grid, GridCol, Image, TextInput } from '@mantine/core';
+import { Container, Grid, GridCol, Image, TextInput, Input, Textarea, Button } from '@mantine/core';
 import BottomNavBar from './bottom-nav.js';
 import MiniFish from '../assets/minifish.png';
 import mapSample from '../assets/mapSample.png';
@@ -61,65 +61,78 @@ const InformationPopup = ({ onClose, onSave, spotInformation, setSpotInformation
 
   return (
     <div className="popup">
-      <button className="popup-close-button" onClick={onClose}>
-        X {/*<img src={closePNG} alt="close" />*/}
-      </button>
-      <div>
-        <label htmlFor="spotName">Spot Name:</label>
-        <input
-          type="text"
-          id="spotName"
-          value={spotName}
-          onChange={(e) => setSpotName(e.target.value)}
-          
-        />
+      <div className='popup-sect-but-x'>
+        <button className="popup-close-button" onClick={onClose}>
+        ✖
+        </button>
       </div>
-      <div>
-        <label htmlFor="description">Description:</label>
-        <textarea
-          id="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="tags">Tags:</label>
-        <input
-          type="text"
-          id="tags"
-          value={tags}
-          onChange={(e) => setTags(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="species">Species:</label>
-        <input
-          type="text"
-          id="species"
-          value={species}
-          onChange={(e) => setSpecies(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="depth">Depth:</label>
-        <input
-          type="text"
-          id="depth"
-          value={depth}
-          onChange={(e) => setDepth(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="warnings">Warnings:</label>
-        <textarea
-          id="warnings"
-          value={warnings}
-          onChange={(e) => setWarnings(e.target.value)}
-        />
-      </div>
-      <button onClick={onSubmit}>
-         Submit 
-      </button>
+      <Grid className="popup">
+          <GridCol className="popup-sect" span={12}>
+            <label htmlFor="spotName">
+              <GiHamburgerMenu /> Spot Name:
+            </label>
+            <Input
+              id="spotName"
+              value={spotName}
+              onChange={(e) => setSpotName(e.target.value)}
+            />
+          </GridCol>
+          <GridCol className="popup-sect" span={12}>
+            <label htmlFor="description">
+              <GiHamburgerMenu /> Description:
+            </label>
+            <Input
+              id="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </GridCol>
+          <GridCol className="popup-sect" span={12}>
+            <label htmlFor="tags">
+              <GiHamburgerMenu /> Tags:
+            </label>
+            <Input
+              id="tags"
+              value={tags}
+              onChange={(e) => setTags(e.target.value)}
+            />
+          </GridCol>
+          <GridCol className="popup-sect" span={12}>
+            <label htmlFor="species">
+              <GiHamburgerMenu /> Species:
+            </label>
+            <Input
+              id="species"
+              value={species}
+              onChange={(e) => setSpecies(e.target.value)}
+            />
+          </GridCol>
+          <GridCol className="popup-sect" span={12}>
+            <label htmlFor="depth">
+              <GiHamburgerMenu /> Depth:
+            </label>
+            <Input
+              id="depth"
+              value={depth}
+              onChange={(e) => setDepth(e.target.value)}
+            />
+          </GridCol>
+          <GridCol className="popup-sect" span={12}>
+            <label htmlFor="warnings">
+              <GiHamburgerMenu /> Warnings:
+            </label>
+            <Input
+              id="warnings"
+              value={warnings}
+              onChange={(e) => setWarnings(e.target.value)}
+            />
+          </GridCol>
+          <GridCol className="popup-sect-but" span={12}>
+            <Button className="Button-1 " style={{ backgroundColor: 'green' }} onClick={onSubmit}>
+              Add Spot
+            </Button>
+          </GridCol>
+        </Grid>
     </div>
   );
 };
