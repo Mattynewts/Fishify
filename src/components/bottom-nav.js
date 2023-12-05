@@ -18,7 +18,7 @@ const BottomNavBar = () => {
               <Image className="nav-sec" src={NotificationsIcon} alt="Notifications" style={{ marginBottom: '10px' }} />
           </GridCol>
           <GridCol style={{ fontSize: '12px', textAlign: 'center', display: 'flex', justifyContent: 'space-between', margin: '0 auto', width: '245px' }}>
-            <Link to="/path-for-new-spot" style={{ marginLeft: '10px' }}>New Spot</Link>
+            <Link to="/dashboard" style={{ marginLeft: '10px' }}>New Spot</Link>
             <Link to="/profile">Profile</Link>
             <Link to="/path-for-notifications">Notifications</Link>
           </GridCol>
