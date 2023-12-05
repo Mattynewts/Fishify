@@ -145,11 +145,12 @@ body {
 
 .modal-button.leave {
     background-color: #ff6b6b;
+    margin-bottom: 15px;
     color: white;
 }
 
 .modal-button.stay {
-    background-color: #F4F4F4;
+    background-color: #f4f4f4;
     color: black;
 }
 
@@ -173,11 +174,11 @@ body {
 }
 
 .manage-group-modal-content {
-    width: 363px;
-    height: 378px;
+    font-family: 'Poppins Light', sans-serif !important;
+    width: 340px;
+    height: 355px;
     background: white;
     border-radius: 15px;
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -239,7 +240,6 @@ body {
   .email-input {
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
     border-radius: 5px;
   }
   

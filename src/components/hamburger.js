@@ -103,7 +103,7 @@ const Hamburger = () => {
             <div className="modal-overlay">
                 <div className="modal-box">
                     <div className="modal-content">
-                        <p>Are you sure you want to leave the group?</p>
+                        <p>Are you sure you want to <strong>leave</strong> the group?</p>
                         <div className="modal-actions">
                             <button className="modal-button leave" onClick={() => selectedGroup && handleLeaveGroup(selectedGroup.group_id)}>Leave</button>
                             <button className="modal-button stay" onClick={() => setShowLeaveModal(false)}>Stay</button>
