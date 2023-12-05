@@ -36,6 +36,7 @@ const Dashboard = () => {
     setCreateNewSpot(true);
     setCreateLocation(false);
     setExitButton(true); 
+    setShowPopup(false); 
   };
 
   const handleExitButtonClick = () => {
