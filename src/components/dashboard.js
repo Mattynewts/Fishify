@@ -1,16 +1,55 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Grid, GridCol, Image, TextInput } from '@mantine/core';
 import BottomNavBar from './bottom-nav.js';
 import MiniFish from '../assets/minifish.png';
+import mapSample from '../assets/mapSample.png';
+import newSpotMark from '../assets/newSpotMark.png';
+import spotMark from '../assets/spotMarker.png';
+import closePNG from '../assets/closePNG.png';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useAuth } from './authcontext.js'; // Adjust the path to the AuthContext file
 import { useNavigate } from 'react-router-dom'; // Assuming you are using React Router v6
 import '../styling/login.css';
 import '../styling/dashboard.css';
+import SpotInfoPopup from './spot-info'; // Updated import statement
 
 const Dashboard = () => {
   const { user, login } = useAuth();
   const navigate = useNavigate();
+
+  const [grid, setGrid] = useState(Array.from({ length: 10 }, () => Array(10).fill(null)));
+  const [selectedCell, setSelectedCell] = useState(null);
+  const [CreateSpotGrid, setCreateNewSpot] = useState(false);
+  const [createLocation, setCreateLocation] = useState(true);
+  const [exitButton, setExitButton] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const handleClick = (row, col) => {
+    if(CreateSpotGrid){
+      console.log(`Clicked on cell (${row}, ${col})`);
+      setSelectedCell({row, col});
+      
+    }
+    
+  };
+
+  const handleCreateLocationClick = () => {
+    setCreateNewSpot(true);
+    setCreateLocation(false);
+    setExitButton(true); 
+  };
+
+  const handleExitButtonClick = () => {
+    setCreateNewSpot(false);
+    setCreateLocation(true);
+    setExitButton(false); 
+  };
+     
+  const handleSpotClick=()=>
+  {
+    if(CreateSpotGrid === false)
+    setShowPopup(true); 
+    
+  }
 
   useEffect(() => {
     if (user === null) {
@@ -19,6 +58,8 @@ const Dashboard = () => {
     else {
       console.log(user);
     }
+    
+    
   }, [user, navigate]);
 
   return (
@@ -58,6 +99,89 @@ const Dashboard = () => {
               }}
             />
           </GridCol>
+
+
+          <div className="map-container">
+            <div className="grid-container">
+              {exitButton && (
+                <button className="close-button" onClick={handleExitButtonClick}>
+                  X
+                </button>
+              )}
+
+              {/* Grid */}
+              {grid.map((row, rowIndex) => (
+                <div key={rowIndex} className="grid-row">
+                  {row.map((cell, colIndex) => (
+                    <div
+                      key={colIndex}
+                      className={`grid-cell ${CreateSpotGrid && selectedCell && selectedCell.row === rowIndex && selectedCell.col === colIndex ? 'selected' : ''}`} //"grid-cell"
+                      onClick={() => handleClick(rowIndex, colIndex)}
+                    >
+                      {cell}
+                    </div>
+                  ))}
+                </div>
+              ))}
+
+              <img
+                src={mapSample}
+                alt="mapSample"
+                className="map-overlay"
+                
+              />
+
+              <img
+                src={spotMark}
+                alt="spot1"
+                className="spot-1"
+                onClick={handleSpotClick}
+              />  
+
+              <img
+                src={spotMark}
+                alt="spot2"
+                className="spot-2"
+                onClick={handleSpotClick}
+              />  
+
+              <img
+                src={spotMark}
+                alt="spot3"
+                className="spot-3"
+                onClick={handleSpotClick}
+              />  
+              
+              {CreateSpotGrid && selectedCell && (
+                <img
+                  src={newSpotMark}
+                  alt="newSpotMark"
+                  className="overlay-newMarker"
+                  style={{
+                    top: selectedCell.row * 32, 
+                    left: selectedCell.col * 32, 
+                  }}
+                />
+              )}
+
+              {CreateSpotGrid && (
+                <img
+                src={closePNG}
+                alt="close"
+                className="close-PNG"
+              />
+
+              )}
+              
+            </div>
+            
+            {createLocation && (
+              <button onClick={handleCreateLocationClick}>Create Location</button>
+            )}
+             {showPopup && <SpotInfoPopup onClose={() => setShowPopup(false)} />}
+
+          </div>
+
         </Grid>
         <br />
         <br />
