@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useReducer } from 'react';
 import { Container, Grid, GridCol, Image, TextInput } from '@mantine/core';
 import BottomNavBar from './bottom-nav.js';
 import MiniFish from '../assets/minifish.png';
@@ -6,44 +6,201 @@ import mapSample from '../assets/mapSample.png';
 import newSpotMark from '../assets/newSpotMark.png';
 import spotMark from '../assets/spotMarker.png';
 import closePNG from '../assets/closePNG.png';
+import plusIcon from '../assets/plusIcon.png';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useAuth } from './authcontext.js'; // Adjust the path to the AuthContext file
-import { useNavigate } from 'react-router-dom'; // Assuming you are using React Router v6
+import { useNavigate } from 'react-router-dom'; 
+import locationData from "../location.json";
+import { setLocations } from './authcontext.js';
 import '../styling/login.css';
 import '../styling/dashboard.css';
 import SpotInfoPopup from './spot-info'; // Updated import statement
 
+
+//infomation popup stub (Need to connect to json file)
+const InformationPopup = ({ onClose, onSave, spotInformation, setSpotInformation, selectedCell }) => {
+  const [spotName, setSpotName] = useState('');
+  const [Location_group, setLocation_group] = useState('');
+  const [Group_id, setGroup_id] = useState('');
+  const [Location_coords_x, setLocation_coords_x] = useState('');
+  const [Location_coords_y, setLocation_coords_y] = useState('');
+  const [description, setDescription] = useState('');
+  const [tags, setTags] = useState('');
+  const [species, setSpecies] = useState('');
+  const [depth, setDepth] = useState('');
+  const [warnings, setWarnings] = useState('');
+
+  const { user, login, locations, setLocations } = useAuth();
+  //const { grid, selectedCell, handleClick } = Dashboard();
+
+  const onSubmit = () => {
+ 
+    const newLocation = {
+      Location_name: spotName,
+      Location_group: Location_group,
+      group_id: Group_id,
+      Location_coords_x: selectedCell.row,
+      Location_coords_y: selectedCell.col,
+      description: description,
+      tags: tags,
+      species: species,
+      depth: depth,
+      warnings: warnings,
+    };
+
+    locations.push(newLocation);
+    
+    console.log('Spot information saved:', { spotName, Location_coords_x, Location_coords_y, description, tags, species, depth, warnings });
+
+
+    onClose();
+  };
+
+  return (
+    <div className="popup">
+      <button className="popup-close-button" onClick={onClose}>
+        X {/*<img src={closePNG} alt="close" />*/}
+      </button>
+      <div>
+        <label htmlFor="spotName">Spot Name:</label>
+        <input
+          type="text"
+          id="spotName"
+          value={spotName}
+          onChange={(e) => setSpotName(e.target.value)}
+          
+        />
+      </div>
+      <div>
+        <label htmlFor="description">Description:</label>
+        <textarea
+          id="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="tags">Tags:</label>
+        <input
+          type="text"
+          id="tags"
+          value={tags}
+          onChange={(e) => setTags(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="species">Species:</label>
+        <input
+          type="text"
+          id="species"
+          value={species}
+          onChange={(e) => setSpecies(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="depth">Depth:</label>
+        <input
+          type="text"
+          id="depth"
+          value={depth}
+          onChange={(e) => setDepth(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="warnings">Warnings:</label>
+        <textarea
+          id="warnings"
+          value={warnings}
+          onChange={(e) => setWarnings(e.target.value)}
+        />
+      </div>
+      <button onClick={onSubmit}>
+         Submit 
+      </button>
+    </div>
+  );
+};
+
+
+
 const Dashboard = () => {
-  const { user, login } = useAuth();
+  const { user, login, locations, setLocations } = useAuth();
   const navigate = useNavigate();
 
   const [grid, setGrid] = useState(Array.from({ length: 10 }, () => Array(10).fill(null)));
   const [selectedCell, setSelectedCell] = useState(null);
-  const [CreateSpotGrid, setCreateNewSpot] = useState(false);
+  const [MapGrid, setMapGrid] = useState(false);
   const [createLocation, setCreateLocation] = useState(true);
   const [exitButton, setExitButton] = useState(false);
-  const [showPopup, setShowPopup] = useState(false);
+  const [CreateLocInfo, setCreateLocInfo] = useState(false);
+  const [forceRerender, forceUpdate] = useReducer((x) => x + 1, 0);
+  const [SpotInfo, setSpotInfo] = useState({
+    spotName: '',
+    Location_name: '',
+    Location_group: '',
+    group_id: '',
+    Location_coords_x: '',
+    Location_coords_y: '',
+    description: '',
+    tags: '',
+    species: '',
+    depth: '',
+    warnings: '',
+  });
+  const [LocationInfo, setLocationInfo] = useState({
+    Location_name: '',
+    Location_group: '',
+    group_id: '',
+    Location_coords_x: '',
+    Location_coords_y: '',
+    description: '',
+    tags: '',
+    species: '',
+    depth: '',
+    warnings: '',
+  });
+
+  useEffect(() => {
+    const newGrid = Array.from({ length: 10 }, () => Array(10).fill(null));
+
+    locations.forEach(({ Location_coords_x, Location_coords_y }) => {
+      if (Location_coords_x >= 0 && Location_coords_x <= 10 && Location_coords_y >= 0 && Location_coords_y <= 10) {
+        newGrid[Location_coords_x][Location_coords_y] = 
+        <img src={spotMark}/>; 
+      }
+    });
+
+    console.log(user);
+    console.log(locations);
+
+    setGrid(newGrid);
+  }, []);
+
   const handleClick = (row, col) => {
-    if(CreateSpotGrid){
+    if(MapGrid){
       console.log(`Clicked on cell (${row}, ${col})`);
       setSelectedCell({row, col});
-      
+      setCreateLocInfo(true);
+
     }
     
   };
 
   const handleCreateLocationClick = () => {
-    setCreateNewSpot(true);
+    setMapGrid(true);
     setCreateLocation(false);
     setExitButton(true); 
     setShowPopup(false); 
   };
 
   const handleExitButtonClick = () => {
-    setCreateNewSpot(false);
+
+    setMapGrid(false);
     setCreateLocation(true);
     setExitButton(false); 
+    setCreateLocInfo(false);
   };
+ 
      
   const handleSpotClick=()=>
   {
@@ -52,16 +209,65 @@ const Dashboard = () => {
     
   }
 
+
+  const handleCreateLocInfoClose = () => {
+    setMapGrid(false);
+    setCreateLocation(true);
+    setExitButton(false); 
+    setCreateLocInfo(false);
+  };
+
+  //currently exits back to main menu
+  //maybe change so save goes back to main map 
+  //and exit button goes back to create new location 
+  const handleCreateLocInfoSubmit = () => {
+
+    /*
+      const newLocation = {
+        Location_name: '',
+        Location_group: '',
+        group_id: '',
+        Location_coords_x: selectedCell.row,
+        Location_coords_y: selectedCell.col,
+        description: '',
+        tags: '',
+        species: '',
+        depth: '',
+        warnings: '',
+      };
+      */
+      //const updatedLocations = [...locationData, newLocation];
+
+      //setLocations((prevLocations) => [...prevLocations, newLocation]);
+      //locations.push(newLocation);
+      /*
+      setGrid((prevGrid) => {
+        const newGrid = [...prevGrid];
+        newGrid[selectedCell.row][selectedCell.col] = 'X'; // Mark the cell as occupied
+        setGrid(newGrid);
+      });
+      */
+
+
+
+    //connect to json and set info
+    handleCreateLocInfoClose();
+
+  };
+
+
   useEffect(() => {
     if (user === null) {
       navigate('/login');
     }
     else {
       console.log(user);
+      console.log(locations);
     }
     
     
   }, [user, navigate]);
+  
 
   return (
     <div className='contain-dash'>
@@ -111,12 +317,16 @@ const Dashboard = () => {
               )}
 
               {/* Grid */}
-              {grid.map((row, rowIndex) => (
+
+              {!CreateLocInfo && grid.map((row, rowIndex) => (
+
                 <div key={rowIndex} className="grid-row">
                   {row.map((cell, colIndex) => (
                     <div
                       key={colIndex}
-                      className={`grid-cell ${CreateSpotGrid && selectedCell && selectedCell.row === rowIndex && selectedCell.col === colIndex ? 'selected' : ''}`} //"grid-cell"
+
+                      className={`grid-cell ${MapGrid && selectedCell && selectedCell.row === rowIndex && selectedCell.col === colIndex ? 'selected' : ''}`} //"grid-cell"
+
                       onClick={() => handleClick(rowIndex, colIndex)}
                     >
                       {cell}
@@ -125,35 +335,17 @@ const Dashboard = () => {
                 </div>
               ))}
 
-              <img
-                src={mapSample}
-                alt="mapSample"
-                className="map-overlay"
-                
-              />
 
-              <img
-                src={spotMark}
-                alt="spot1"
-                className="spot-1"
-                onClick={handleSpotClick}
-              />  
+              {!CreateLocInfo && (
+                <img
+                  src={mapSample}
+                  alt="mapSample"
+                  className="map-overlay"
+                />
+              )}
 
-              <img
-                src={spotMark}
-                alt="spot2"
-                className="spot-2"
-                onClick={handleSpotClick}
-              />  
-
-              <img
-                src={spotMark}
-                alt="spot3"
-                className="spot-3"
-                onClick={handleSpotClick}
-              />  
-              
-              {CreateSpotGrid && selectedCell && (
+             
+              {!CreateLocInfo && MapGrid && selectedCell && (
                 <img
                   src={newSpotMark}
                   alt="newSpotMark"
@@ -165,7 +357,9 @@ const Dashboard = () => {
                 />
               )}
 
-              {CreateSpotGrid && (
+
+
+              {!CreateLocInfo && MapGrid && (
                 <img
                 src={closePNG}
                 alt="close"
@@ -177,11 +371,30 @@ const Dashboard = () => {
             </div>
             
             {createLocation && (
-              <button onClick={handleCreateLocationClick}>Create Location</button>
-            )}
+
              {showPopup && <SpotInfoPopup onClose={() => setShowPopup(false)} />}
 
+
+              <button className="create-location" onClick={handleCreateLocationClick}>
+                  <img src={plusIcon} alt="plus" /> Create Location
+              </button>
+            )}
+
+
           </div>
+
+          {/* need to handle case where on submit we go back to map  */}
+          {CreateLocInfo && (
+            //handleCreateLocInfoSubmit
+            <InformationPopup 
+            onClose = {handleCreateLocInfoClose}
+            onSubmit = {handleCreateLocInfoSubmit}
+            SpotInfo = {SpotInfo}
+            setSpotInfo = {setSpotInfo}
+            selectedCell = {selectedCell}
+            
+            />
+          )}
 
         </Grid>
         <br />
