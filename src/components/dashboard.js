@@ -16,7 +16,6 @@ import '../styling/login.css';
 import '../styling/dashboard.css';
 import SpotInfoPopup from './spot-info'; // Updated import statement
 
-
 //infomation popup stub (Need to connect to json file)
 const InformationPopup = ({ onClose, onSave, spotInformation, setSpotInformation, selectedCell }) => {
   const [spotName, setSpotName] = useState('');
@@ -29,6 +28,7 @@ const InformationPopup = ({ onClose, onSave, spotInformation, setSpotInformation
   const [species, setSpecies] = useState('');
   const [depth, setDepth] = useState('');
   const [warnings, setWarnings] = useState('');
+  const navigate = useNavigate();
 
   const { user, login, locations, setLocations } = useAuth();
   //const { grid, selectedCell, handleClick } = Dashboard();
@@ -52,8 +52,9 @@ const InformationPopup = ({ onClose, onSave, spotInformation, setSpotInformation
     
     console.log('Spot information saved:', { spotName, Location_coords_x, Location_coords_y, description, tags, species, depth, warnings });
 
-
     onClose();
+
+    navigate('/render');
   };
 
   return (
@@ -133,7 +134,9 @@ const Dashboard = () => {
   const [createLocation, setCreateLocation] = useState(true);
   const [exitButton, setExitButton] = useState(false);
   const [CreateLocInfo, setCreateLocInfo] = useState(false);
-  const [forceRerender, forceUpdate] = useReducer((x) => x + 1, 0);
+  const [CreateSpotGrid, setCreateNewSpot] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);	
+  const [forceUpdate, setForceUpdate] = useState(false);
   const [SpotInfo, setSpotInfo] = useState({
     spotName: '',
     Location_name: '',
@@ -176,6 +179,22 @@ const Dashboard = () => {
     setGrid(newGrid);
   }, []);
 
+  const Draw = (()=> {
+    const newGrid = Array.from({ length: 10 }, () => Array(10).fill(null));
+
+    locations.forEach(({ Location_coords_x, Location_coords_y }) => {
+      if (Location_coords_x >= 0 && Location_coords_x <= 10 && Location_coords_y >= 0 && Location_coords_y <= 10) {
+        newGrid[Location_coords_x][Location_coords_y] = 
+        <img src={spotMark}/>; 
+      }
+    });
+
+    console.log(user);
+    console.log(locations);
+
+    setGrid(newGrid);
+  });
+
   const handleClick = (row, col) => {
     if(MapGrid){
       console.log(`Clicked on cell (${row}, ${col})`);
@@ -204,9 +223,8 @@ const Dashboard = () => {
      
   const handleSpotClick=()=>
   {
-    if(CreateSpotGrid === false)
+    if(MapGrid === false)
     setShowPopup(true); 
-    
   }
 
 
@@ -217,42 +235,8 @@ const Dashboard = () => {
     setCreateLocInfo(false);
   };
 
-  //currently exits back to main menu
-  //maybe change so save goes back to main map 
-  //and exit button goes back to create new location 
   const handleCreateLocInfoSubmit = () => {
-
-    /*
-      const newLocation = {
-        Location_name: '',
-        Location_group: '',
-        group_id: '',
-        Location_coords_x: selectedCell.row,
-        Location_coords_y: selectedCell.col,
-        description: '',
-        tags: '',
-        species: '',
-        depth: '',
-        warnings: '',
-      };
-      */
-      //const updatedLocations = [...locationData, newLocation];
-
-      //setLocations((prevLocations) => [...prevLocations, newLocation]);
-      //locations.push(newLocation);
-      /*
-      setGrid((prevGrid) => {
-        const newGrid = [...prevGrid];
-        newGrid[selectedCell.row][selectedCell.col] = 'X'; // Mark the cell as occupied
-        setGrid(newGrid);
-      });
-      */
-
-
-
-    //connect to json and set info
     handleCreateLocInfoClose();
-
   };
 
 
@@ -371,13 +355,12 @@ const Dashboard = () => {
             </div>
             
             {createLocation && (
-
+              <>
              {showPopup && <SpotInfoPopup onClose={() => setShowPopup(false)} />}
-
-
               <button className="create-location" onClick={handleCreateLocationClick}>
                   <img src={plusIcon} alt="plus" /> Create Location
               </button>
+              </>
             )}
 
 
