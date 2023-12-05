@@ -6,9 +6,9 @@
       "name": "User One",
       "Location": "Calgary, Ca",
       "info":"Computer Science Student @ UofC",
-      "Phone":"(123)456-7890",
+      "Phone":"(123) 456-7890",
       "email": "user.one@example.com",
-      "picture":"'./profilePics/logo.png'"
+      "picture":"./profilePics/pic.jpg"
     },
     {
       "username": "user2",
@@ -28,7 +28,7 @@
       "name": "Franky",
       "Location": "Calgary, Ca",
       "info":"Computer Science Student @ UofC",
-      "Phone":"(123)456-7890",
+      "Phone":"(123) 456-7890",
       "email": "Franky521@gmail.com",
       "picture":"./profilePics/logo.png"
     }

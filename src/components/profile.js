@@ -5,7 +5,7 @@ import BottomNavBar from './bottom-nav.js';
 import '../styling/profile.css';
 import MiniFish from '../assets/minifish.png';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import profilepic from'../assets/logo.png'
+import profilepic from'../assets/FrankyProfilePic.png'
 
 const Profile = () => {
   const { user } = useAuth();
@@ -22,7 +22,7 @@ const Profile = () => {
               </h1>
             </strong>
             <GiHamburgerMenu
-              style={{ marginLeft: 'auto', cursor: 'pointer', fontSize: '24px',marginRight:'10px' }}
+              style={{ marginLeft: 'auto', cursor: 'pointer', fontSize: '24px',marginRight:'20px',marginTop:'15px' }}
             />
           </GridCol>
 
@@ -61,6 +61,8 @@ const Profile = () => {
                     borderBottom: '1px solid transparent',
                     boxShadow: 'none',
                     WebkitBoxShadow: 'none',
+                    width: '320px',
+                    zIndex: '-1'
                   },
                 }}
               />

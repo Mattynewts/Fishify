@@ -23,6 +23,7 @@ body {
   .input-dash {
     font-family: 'Poppins Light', sans-serif !important;
     font-weight: 100;
+    padding: 0px;
     appearance: 'none';
     background-color: 'rgb(255, 255, 255)';
     border: 'none';
@@ -49,6 +50,7 @@ body {
   .map-container {
     position: relative;
     border: 10px solid #ffffff;
+    border-radius: 15px;
   }
   
   .grid-row {
@@ -65,6 +67,8 @@ body {
 
   .map-overlay {
     position: absolute;
+    border-radius: 5%;
+    background-color: white;
     top: 0;
     left: 0;
     width: 100%;
@@ -109,20 +113,49 @@ body {
   .create-location{
     background-color: #ffffff; 
     border: none; 
-    color: rgb(0, 0, 0); 
-    padding: 5px 20px; 
+    color: rgb(0, 0, 0);
+    padding: 10px 20px; 
+    padding-top:0px;
+    padding-bottom: 1px;
     text-align: left; 
     text-decoration: none;
     display: inline-block;
-    font-size: 20px;
-    margin: 4px 2px;
+    font-size: 25px;
     cursor: pointer; 
     border-radius: 4px;
+    margin-top:0px;
   }
 
   
   .create-location img {
     margin-right: 0px;
-    width: 25px; 
-    height: 25px;
+    padding-top: 5px;
+    margin-bottom: -6px;
+    width: 30px; 
+    height: 30px;
+  }
+
+  .group-text {
+    background-color: white;
+    padding-top: 5px;
+    margin-bottom: -3px;
+    padding-left: 22px;
+  }
+
+  .weak-text {
+    color: rgb(215, 215, 215);
+    font-weight: lighter;
+  }
+
+  .weak-text-2 {
+    color: rgb(215, 215, 215);
+    font-weight: lighter;
+    font-size: 10px;
+  }
+
+  .group-text-2 {
+    background-color: white;
+    margin-top: -5px;
+    margin-bottom: -6px;
+    padding-left: 22px;
   }
