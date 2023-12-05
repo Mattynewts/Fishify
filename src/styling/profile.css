@@ -7,7 +7,6 @@
    
   }
   .rectangle-container {
-    border: 1px solid #ccc;
     padding: 20px;
     margin: 0 auto; /* Center the rectangle */
     width: 80%; /* Adjust the width as needed */
@@ -22,7 +21,7 @@
     border: 'none';
     border-bottom: '1px solid transparent';
     box-shadow: 'none';
-    padding:15px;
+    padding:0px;
   }
   .info-text {
     font-size: 0.9em; /* Smaller font size */
@@ -35,19 +34,18 @@
   }
   .round-rectangle {
     background-color: #fff; /* Set background color */
-    border: 1px solid #ccc; /* Border style */
     border-radius: 15px; /* Rounded edges */
     padding: 10px 20px;
     margin-bottom: 10px; /* Space between each rectangle */
-     
-    
-  }
+    box-shadow: 0 4px 42px rgba(153, 171, 198, 0.13); /* Small drop shadow */
+  }  
   .profile-header {
     text-align: center;
     margin-bottom: 20px;
     text-align: center;
     color: '#150B3D';
-    font-weight: 700;
+    font-size: 15px !important;
+    font-weight: 600;
     font-size: large;
     font-family: 'Poppins' ;
   }
@@ -55,17 +53,23 @@
   {
     text-align: center;
     color: '#150B3D';
-    font-weight: 700;
+    font-size: 17px !important;
+    font-weight: 600;
     font-size: x-large;
     font-family: 'Poppins' ;
+    padding-bottom: 5px;
   }
   .info-text
   {
     text-align: center;
     font-family: 'Poppins' ;
+    padding-bottom: 5px;
   }
   .phone
   {
+    color: #150B3D;
+    font-size: 12px !important;
+    font-weight: 300;
     text-align: center;
     font-size: medium;
     font-family: 'Poppins' ;
@@ -75,3 +79,11 @@
     margin-top: 20px;
   }
   
+  .input-dash.input-no-focus-outline {
+    position: relative; /* Ensure a stacking context for z-index to work */
+    z-index: -1; /* Place it behind other elements */
+  }
+  
+  .input-dash.input-no-focus-outline input {
+    pointer-events: none; /* Make it unclickable */
+  }
