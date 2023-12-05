@@ -193,6 +193,7 @@ const Dashboard = () => {
     setMapGrid(true);
     setCreateLocation(false);
     setExitButton(true); 
+    setShowPopup(false); 
   };
 
   const handleExitButtonClick = () => {
