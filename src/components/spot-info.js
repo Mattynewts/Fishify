@@ -6,6 +6,7 @@ import { Container, Grid, GridCol, Image, TextInput, Text, Button, Avatar } from
 
 const SpotInfoPopup = ({ onClose }) => {
   const { user } = useAuth();
+  const {location} = useAuth();
   return (
     <div className="spot-info-popup">
       {/* Close button with image */}
