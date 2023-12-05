@@ -1,0 +1,351 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.hamburger-page-container {
+    width: 320px;
+    height: 639px;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.hamburger-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    position: fixed;
+    top: 0;
+    width: 320px;
+    background: white;
+    margin-left: -20px;
+    z-index: 1;
+}
+
+.groups-list-container {
+    overflow-y: auto;
+    margin-top: 60px;
+    margin-bottom: 0px;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+}
+
+.group-count {
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.groups-list {
+    padding: 16px;
+}
+
+.group-item {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 42px rgba(153, 171, 198, 0.13);
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.group-color-indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.group-name {
+    flex-grow: 1;
+    margin-right: auto;
+}
+
+.group-action-button {
+    background: transparent;
+    border: none;
+    color: #000;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 4px 8px;
+    margin-left: 10px;
+}
+
+.group-action-button:hover {
+    text-decoration: none;
+}
+
+.create-group-button {
+    bottom: 0;
+    width: 200px;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgba(153, 170, 197, 0.18);
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0px 4px 62px rgba(107, 124, 149, 0.18);
+    text-align: center;
+    margin: 10px auto;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.modal-actions {
+    margin-top: 20px;
+}
+
+.modal-button {
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.modal-button.leave {
+    background-color: #ff6b6b;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.modal-button.stay {
+    background-color: #f4f4f4;
+    color: black;
+}
+
+.back-arrow {
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.back-arrow:hover {
+    background-color: rgba(211, 211, 211, 0.3);
+    transform: scale(1.5);
+}
+
+.back-arrow:active {
+    transform: scale(0.9);
+}
+
+.manage-group-modal-content {
+    font-family: 'Poppins Light', sans-serif !important;
+    width: 340px;
+    height: 355px;
+    background: white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: -50vh;
+}
+
+.manage-group-modal-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.manage-group-modal-close {
+    margin-left: auto;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.manage-group-modal-title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 25px;
+    margin: 0;
+    margin-left: 15px;
+}
+
+.manage-group-delete-option {
+    cursor: pointer;
+    color: #FF0000;
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 20px;
+}
+
+.invite-section {
+    width: 100%; /* Take up full width of the white box */
+    display: flex; /* Set to flex to layout children with flexbox */
+    flex-direction: column; /* Lay out children in a column */
+    padding: 15px; /* Padding inside the invite section */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.invite-actions {
+    display: flex;
+    justify-content: space-between; /* Adjust as needed for your design */
+    align-items: flex-end; /* Aligns children at the bottom */
+  }
+  
+  .invite-label {
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+  
+  .email-input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  
+  .invite-button {
+    background-color: #C7DEC8; /* Pastel green background */
+    color: rgb(42, 51, 44);
+    font-size: 12px;
+    width: 90px; /* Adjust width as needed */
+    height: 35px; /* Adjust height as needed */
+    background-color: #C7DEC8; /* Pastel green background */
+    border-radius: 15px; /* Pill shape */
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-right: 55px; 
+    margin-left: -15px;
+    margin-top: 20px;
+    
+  }
+  .invite-button:hover {
+    text-decoration: none; /* Optional: remove underline on hover for effect */
+    color: #304631; /* Optional: change color on hover */
+    background-color: #e0ece1;
+  }
+  
+  .copy-link-button {
+    flex: 1; /* Allow buttons to grow and fill available space equally */
+    color: #304631;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: underline;
+    padding: 4px 8px;
+    font-size: 12px;
+    margin-top: 15px;
+    border-radius: 15px; /* Pill shape */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 10px;
+
+   
+     /* Spacing between buttons */
+    
+    
+  }
+  .copy-link-button:hover {
+    text-decoration: none; /* Optional: remove underline on hover for effect */
+    color: #304631; /* Optional: change color on hover */
+  }
+
+  
+  .member-list-section {
+  padding: 15px;
+  margin-right: -15px;
+  margin-top: -50px;
+  width: 95%;
+  font-size: 14px;
+  }
+  
+  .member-list {
+    display: flex;
+    flex-direction: column;
+    padding-right: 15px;
+  }
+  
+  .member-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f4f4f4;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+  }
+  
+  .member-name,
+.member-role {
+  flex: 1; /* Gives name and role space to grow and shrink */
+  margin-right: 5px; /* Adds space between the name, role, and kick button */
+}
+  
+.kick-button {
+    cursor: pointer;
+  text-decoration: underline;
+  color: #000; /* Change as needed */
+  padding: 5px;
+  font-size: 14px;
+  background: none;
+  border: none; /* Underline to indicate it's clickable */
+  }
+  
+  /* Additional styles for the scrollable area */
+  .member-list {
+    max-height: 150px; /* Sets a maximum height for the list */
+    overflow-y: auto; /* Adds a scrollbar if content overflows */
+    font-size: 15px;
+  }
+  .buttons-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    margin-top: -30px;
+  }

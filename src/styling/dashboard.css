@@ -23,6 +23,7 @@ body {
   .input-dash {
     font-family: 'Poppins Light', sans-serif !important;
     font-weight: 100;
+    padding: 0px;
     appearance: 'none';
     background-color: 'rgb(255, 255, 255)';
     border: 'none';
@@ -38,4 +39,196 @@ body {
   .cont {
     margin-left: 10px;
     margin-right: 10px;
+  }
+
+
+  .grid-container {
+    position: relative;
+    border: 0px solid #ffffff;
+  }
+
+  .map-container {
+    position: relative;
+    border: 10px solid #ffffff;
+    border-radius: 15px;
+  }
+  
+  .grid-row {
+    display: flex;
+  }
+
+  .grid-cell {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+  }
+
+  .map-overlay {
+    position: absolute;
+    border-radius: 5%;
+    background-color: white;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6; /* Use a value between 0 and 1 for opacity */
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  .overlay-newMarker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .close-button {
+    position: absolute;
+    top: -12px;
+    left: 91%;
+    width: 20px; 
+    height: 20px;
+    opacity: 0; 
+
+  }
+
+  .close-PNG {
+    position: absolute;
+    top: 0;
+    left: 90%;
+    width: 30px;
+    height: 30px;
+    opacity: 100%; 
+    pointer-events: none;
+  }
+
+  /* all styles available: */
+  .create-location{
+    background-color: #ffffff; 
+    border: none; 
+    color: rgb(0, 0, 0);
+    padding: 10px 20px; 
+    padding-top:0px;
+    padding-bottom: 1px;
+    text-align: left; 
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    cursor: pointer; 
+    border-radius: 4px;
+    margin-top:0px;
+  }
+
+  
+  .create-location img {
+    margin-right: 0px;
+    padding-top: 5px;
+    margin-bottom: -6px;
+    width: 30px; 
+    height: 30px;
+  }
+
+  .group-text {
+    background-color: white;
+    padding-top: 5px;
+    margin-bottom: -3px;
+    padding-left: 22px;
+  }
+
+  .weak-text {
+    color: rgb(215, 215, 215);
+    font-weight: lighter;
+  }
+
+  .weak-text-2 {
+    color: rgb(215, 215, 215);
+    font-weight: lighter;
+    font-size: 10px;
+  }
+
+  .group-text-2 {
+    background-color: white;
+    margin-top: -5px;
+    margin-bottom: -6px;
+    padding-left: 22px;
+  }
+
+  .popup {
+    font-size: 11px;
+    margin-top: 8px;
+    background-color: white;
+    border-radius: 15px;
+  }
+
+  .popup-sect {
+    margin-top: 5px;
+    padding-left: 15px;
+  }
+
+  Input {
+    height: 30px;
+    background-color: #F8F8F8;
+    border-radius: 15px;
+    border: none;
+    width: 290px;
+  }
+  
+  .Button-1 {
+    font-family: 'Poppins Light', sans-serif !important;
+    font-weight: 100;
+    border-radius: 30px;
+    width: 100px;
+    background-color: #8AB982 !important;
+    text-align: center;
+    font-size: 12px;
+    color: #155323 !important;
+    font-weight: 300 !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 10px auto;
+  }
+  .popup-sect-but {
+    text-align: center;
+    padding-top: 10px;
+  }
+
+  .popup-sect-but-x {
+    text-align: right;
+  }
+
+  .popup-close-button {
+    font-family: 'Poppins Light', sans-serif !important;
+    font-weight: 100;
+    width: 10px;
+    background-color: #ffffff !important;
+    text-align: center;
+    font-size: 12px;
+    color: #000000 !important;
+    font-weight: 300 !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 10px auto;
+    margin-right: 12px;
+  }
+
+  .popup-close-button:hover {
+    font-family: 'Poppins Light', sans-serif !important;
+    font-weight: 100;
+    width: 10px;
+    background-color: #ffffff !important;
+    text-align: center;
+    font-size: 12px;
+    color: #000000 !important;
+    font-weight: 300 !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 10px auto;
+    margin-right: 12px;
   }

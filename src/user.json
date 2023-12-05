@@ -1,9 +1,14 @@
+
 [
     {
       "username": "user1",
       "password": "password1",
       "name": "User One",
-      "email": "user.one@example.com"
+      "Location": "Calgary, Ca",
+      "info":"Computer Science Student @ UofC",
+      "Phone":"(123) 456-7890",
+      "email": "user.one@example.com",
+      "picture":"./profilePics/pic.jpg"
     },
     {
       "username": "user2",
@@ -16,5 +21,15 @@
       "password": "12345",
       "name": "Sandip Mishra",
       "email": "smishracalgary@gmail.com"
+    },
+    {
+      "username": "Franky",
+      "password": "123456",
+      "name": "Franky",
+      "Location": "Calgary, Ca",
+      "info":"Computer Science Student @ UofC",
+      "Phone":"(123) 456-7890",
+      "email": "Franky521@gmail.com",
+      "picture":"./profilePics/logo.png"
     }
 ]
