@@ -179,22 +179,6 @@ const Dashboard = () => {
     setGrid(newGrid);
   }, []);
 
-  const Draw = (()=> {
-    const newGrid = Array.from({ length: 10 }, () => Array(10).fill(null));
-
-    locations.forEach(({ Location_coords_x, Location_coords_y }) => {
-      if (Location_coords_x >= 0 && Location_coords_x <= 10 && Location_coords_y >= 0 && Location_coords_y <= 10) {
-        newGrid[Location_coords_x][Location_coords_y] = 
-        <img src={spotMark}/>; 
-      }
-    });
-
-    console.log(user);
-    console.log(locations);
-
-    setGrid(newGrid);
-  });
-
   const handleClick = (row, col) => {
     if(MapGrid){
       console.log(`Clicked on cell (${row}, ${col})`);
