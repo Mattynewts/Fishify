@@ -6,9 +6,15 @@ import '../styling/profile.css';
 import MiniFish from '../assets/minifish.png';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import profilepic from'../assets/FrankyProfilePic.png'
+import { useNavigate } from 'react-router-dom'; 
 
 const Profile = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const openHamburgerMenu = () => {
+    navigate('/menu'); 
+  };
 
   return (
     <div className="profile-container">

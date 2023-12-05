@@ -1,0 +1,58 @@
+{
+    "groups": [
+      {
+        "group_id": 1,
+        "group_name": "The Squad",
+        "members": ["user1", "user2"],
+        "owner": "user1"
+      },
+      {
+        "group_id": 2,
+        "group_name": "UofC Fishing",
+        "members": ["user2", "adippy"],
+        "owner": "user2"
+      },
+      {
+        "group_id": 3,
+        "group_name": "NW Fishermen",
+        "members": ["user1", "adippy"],
+        "owner": "adippy"
+      },
+      {
+        "group_id": 4,
+        "group_name": "Lake Lovers",
+        "members": ["user3", "user4"],
+        "owner": "user3"
+      },
+      {
+        "group_id": 5,
+        "group_name": "River Rangers",
+        "members": ["user5", "user3"],
+        "owner": "user5"
+      },
+      {
+        "group_id": 6,
+        "group_name": "Sea Sailors",
+        "members": ["user6", "user2"],
+        "owner": "user6"
+      },
+      {
+        "group_id": 7,
+        "group_name": "Fish Fanatics",
+        "members": ["user2", "user7"],
+        "owner": "user7"
+      },
+      {
+        "group_id": 8,
+        "group_name": "Ocean Observers",
+        "members": ["user4", "user5"],
+        "owner": "user4"
+      },
+      {
+        "group_id": 9,
+        "group_name": "Aqua Adventurers",
+        "members": ["user1", "user6"],
+        "owner": "user1"
+      }
+    ]
+  }

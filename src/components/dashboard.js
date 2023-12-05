@@ -183,6 +183,10 @@ const Dashboard = () => {
     setGrid(newGrid);
   }, []);
 
+  const openHamburgerMenu = () => {
+    navigate('/menu'); 
+  };
+
   const handleClick = (row, col) => {
     if(MapGrid){
       console.log(`Clicked on cell (${row}, ${col})`);
@@ -256,7 +260,7 @@ const Dashboard = () => {
                 Discovery Map
               </h1>
             </strong>
-            <GiHamburgerMenu
+            <GiHamburgerMenu onClick={openHamburgerMenu}
               style={{ marginLeft: 'auto', cursor: 'pointer', fontSize: '24px' }}
             />
           </GridCol>
