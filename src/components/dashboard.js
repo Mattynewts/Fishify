@@ -269,6 +269,8 @@ const Dashboard = () => {
                   borderBottom: '1px solid transparent',
                   boxShadow: 'none',
                   WebkitBoxShadow: 'none',
+                  width: '320px',
+                  marginBottom: '10px'
                 },
               }}
             />
@@ -336,13 +338,18 @@ const Dashboard = () => {
               )}
               
             </div>
-            
+            <div className="group-text">
+              <strong>Group: </strong>The Squad <span className='weak-text'>(Owner)</span> 
+            </div>
             {createLocation && (
               <>
              {showPopup && <SpotInfoPopup onClose={() => setShowPopup(false)} />}
               <button className="create-location" onClick={handleCreateLocationClick}>
                   <img src={plusIcon} alt="plus" /> Create Location
               </button>
+              <div className="group-text-2">
+              <span className='weak-text-2'>Click to Edit, View and add Existing Locations</span> 
+              </div>
               </>
             )}
 
@@ -366,7 +373,7 @@ const Dashboard = () => {
         <br />
         <br />
         <br />
-        <BottomNavBar />
+        <BottomNavBar selectedTab={1} />
       </Container>
     </div>
   );
