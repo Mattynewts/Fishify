@@ -72,7 +72,7 @@ const Profile = () => {
         </Grid>
       </Container>
       <div className="bottom-nav-wrapper">
-        <BottomNavBar />
+      <BottomNavBar selectedTab={2} />
       </div>
     </div>
   );

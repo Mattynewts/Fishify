@@ -373,7 +373,7 @@ const Dashboard = () => {
         <br />
         <br />
         <br />
-        <BottomNavBar />
+        <BottomNavBar selectedTab={1} />
       </Container>
     </div>
   );
