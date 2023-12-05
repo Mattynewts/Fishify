@@ -20,7 +20,7 @@ const SpotInfoPopup = ({ onClose }) => {
         <div className="round-rectangle" style={{ backgroundColor: '#FFA1A1' }}>Bait-Fishing</div>
         <div className="round-rectangle" style={{ backgroundColor: '#DCFFCF' }}>Spin Cast</div>
       </div>
-      <h2 className='species'> species</h2>
+      <h2 className='species'> Species</h2>
       <div className="item-container">
         <div className="round-rectangle" style={{ backgroundColor: '#FFEAB6' }}>Pike</div>
         <div className="round-rectangle" style={{ backgroundColor: '#FF8787' }}>Walleyes</div>
