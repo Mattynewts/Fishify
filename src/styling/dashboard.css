@@ -88,30 +88,36 @@ body {
     position: absolute;
     top: 32px;
     left: 0;
-    width: 30; 
+    width: 30; /* Make the image cover the entire grid */
     height: 30;
-    opacity: 40%;
-    pointer-events: none;
+    opacity: 40%; /* Adjust the opacity as needed */
+    /* Allow clicks to pass through the image to the underlying grid */
+    z-index: 10
+
   }
 
   .spot-2 {
     position: absolute;
     top: 0;
     left: 32px;
-    width: 30; 
+    width: 30; /* Make the image cover the entire grid */
     height: 30;
-    opacity: 40%;
-    pointer-events: none;
+    opacity: 40%; /* Adjust the opacity as needed */
+     /* Allow clicks to pass through the image to the underlying grid */
+    z-index: 10
+
   }
 
   .spot-3 {
     position: absolute;
     top: 0;
     left: 0;
-    width: 30; 
+    width: 30; /* Make the image cover the entire grid */
     height: 30;
-    opacity: 40%; 
-    pointer-events: none; 
+    opacity: 40%; /* Adjust the opacity as needed */
+     /* Allow clicks to pass through the image to the underlying grid */
+    z-index: 10
+
   }
 
 
@@ -122,6 +128,7 @@ body {
     width: 20px; 
     height: 20px;
     opacity: 0; 
+
   }
 
   .close-PNG {
@@ -156,3 +163,4 @@ body {
     height: 25px;
   }
   
+

@@ -14,6 +14,7 @@ import locationData from "../location.json";
 import { setLocations } from './authcontext.js';
 import '../styling/login.css';
 import '../styling/dashboard.css';
+import SpotInfoPopup from './spot-info'; // Updated import statement
 
 
 //infomation popup stub (Need to connect to json file)
@@ -180,6 +181,7 @@ const Dashboard = () => {
       console.log(`Clicked on cell (${row}, ${col})`);
       setSelectedCell({row, col});
       setCreateLocInfo(true);
+
     }
     
   };
@@ -191,11 +193,20 @@ const Dashboard = () => {
   };
 
   const handleExitButtonClick = () => {
+
     setMapGrid(false);
     setCreateLocation(true);
     setExitButton(false); 
     setCreateLocInfo(false);
   };
+ 
+     
+  const handleSpotClick=()=>
+  {
+    if(CreateSpotGrid === false)
+    setShowPopup(true); 
+    
+  }
 
 
   const handleCreateLocInfoClose = () => {
@@ -253,6 +264,7 @@ const Dashboard = () => {
       console.log(locations);
     }
     
+    
   }, [user, navigate]);
   
 
@@ -304,12 +316,16 @@ const Dashboard = () => {
               )}
 
               {/* Grid */}
+
               {!CreateLocInfo && grid.map((row, rowIndex) => (
+
                 <div key={rowIndex} className="grid-row">
                   {row.map((cell, colIndex) => (
                     <div
                       key={colIndex}
+
                       className={`grid-cell ${MapGrid && selectedCell && selectedCell.row === rowIndex && selectedCell.col === colIndex ? 'selected' : ''}`} //"grid-cell"
+
                       onClick={() => handleClick(rowIndex, colIndex)}
                     >
                       {cell}
@@ -317,6 +333,7 @@ const Dashboard = () => {
                   ))}
                 </div>
               ))}
+
 
               {!CreateLocInfo && (
                 <img
@@ -340,6 +357,7 @@ const Dashboard = () => {
               )}
 
 
+
               {!CreateLocInfo && MapGrid && (
                 <img
                 src={closePNG}
@@ -352,6 +370,10 @@ const Dashboard = () => {
             </div>
             
             {createLocation && (
+
+             {showPopup && <SpotInfoPopup onClose={() => setShowPopup(false)} />}
+
+
               <button className="create-location" onClick={handleCreateLocationClick}>
                   <img src={plusIcon} alt="plus" /> Create Location
               </button>
