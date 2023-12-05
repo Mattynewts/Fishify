@@ -30,13 +30,7 @@ const SpotInfoPopup = ({ onClose }) => {
       <div className='info'>Big Waves</div>
       <h3 className='species'>Recent Catches</h3>
       <div className='info'>No Recent Catches</div>
-      <div className="upload-box">
-        <label htmlFor="file-upload" className="custom-file-upload">
-          
-        </label>
-        <input id="file-upload" type="file" />
-      </div>
-
+      
     </div>
   );
 };
